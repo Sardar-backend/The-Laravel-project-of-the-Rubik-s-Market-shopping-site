@@ -17,12 +17,12 @@ return new class extends Migration
             $table->bigInteger('phonenumber')->unique()->nullable();
             $table->boolean('is_superuser')->default(0);
             // $table->boolean('is_staff')->default(0);
-            $table->integer('cart_number')->nullable();
-            $table->integer('meli_code')->nullable();
+            $table->bigInteger('cart_number')->nullable();
+            $table->bigInteger('meli_code')->nullable();
             $table->dateTime('birthday')->nullable();
             // $table->string('password');
             $table->char('image')->nullable();
-            $table->integer('home_number')->nullable();
+            $table->bigInteger('home_number')->nullable();
             $table->string('email')->nullable()->unique();
             $table->rememberToken();
             $table->timestamps();

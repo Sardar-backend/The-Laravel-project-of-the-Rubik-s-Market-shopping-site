@@ -51,12 +51,7 @@
 
               <!-- /.card-body -->
             </div>
-            <!-- <div class="card-footer d-flex">
-                <div class="cart ">
-                    {{$category->render()}}
-                </div>
 
-              </div> -->
             </div></div>
             <div class="container">
                                 <div class="row">

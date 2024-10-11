@@ -91,6 +91,9 @@
      @php
         use App\Helpers\Cart\Cart;
         $count =(Cart::all()->count()==0)?null:Cart::all()->count();
+
+        $categorys=App\Models\productcategory::where('parent',0)->get();
+
      @endphp
     <div id="encode43254bvfb">
         <div class="container pt-1">
@@ -150,213 +153,30 @@
                                                 <a href="#" aria-expanded="false"><i class="fa fa-bars"></i>&nbsp;&nbsp;گروه های محصولات<em class="droopmenu-topanim"></em></a><div class="dm-arrow"></div>
                                                 <ul class="droopmenu-grid droopmenu-grid-9">
                                                     <li class="droopmenu-tabs droopmenu-tabs-vertical">
-                                                        <div class="droopmenu-tabsection droopmenu-tab-active" id="droopmenutab10">
-                                                            <a class="droopmenu-tabheader" href="#">کالای دیجیتال</a>
-                                                            <div class="droopmenu-tabcontent">
-                                                                <div class="droopmenu-row">
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>صوت</h4></li>
-                                                                        <li><a href="products.html">رادیو دیجیتال</a></li>
-                                                                        <li><a href="products.html">ضبط صوت</a></li>
-                                                                        <li><a href="products.html">اسپیکر</a></li>
-                                                                        <li><a href="products.html">هدفون</a></li>
-                                                                        <li><a href="products.html">میکروفن</a></li>
-                                                                        <li><h4>گوشی موبایل</h4></li>
-                                                                        <li><a href="products.html">گوشی موبایل</a></li>
-                                                                        <li><a href="products.html">تبلت</a></li>
-                                                                        <li><a href="products.html">کیف و کاور</a></li>
-                                                                        <li><a href="products.html">جانبی موبایل</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>تصویر</h4></li>
-                                                                        <li><a href="products.html">ال سی دی</a></li>
-                                                                        <li><a href="products.html">تلویزیون</a></li>
-                                                                        <li><a href="products.html">گیرنده دیجیتال</a></li>
-                                                                        <li><h4>کنسول بازی</h4></li>
-                                                                        <li><a href="products.html">پلی استیشن 4</a></li>
-                                                                        <li><a href="products.html">پلی استیشن 3</a></li>
-                                                                        <li><a href="products.html">پلی استیشن 2</a></li>
-                                                                        <li><a href="products.html">ایکس باکس 360</a></li>
-                                                                        <li><a href="products.html">نینتندو</a></li>
-                                                                        <li><a href="products.html">بازی کامپیوتری</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image1.png" alt="image"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    @foreach ($categorys as $categor )
 
-                                                        <div class="droopmenu-tabsection" id="droopmenutab11">
-                                                            <a class="droopmenu-tabheader" href="#">لوازم منزل</a>
-                                                            <div class="droopmenu-tabcontent">
-                                                                <div class="droopmenu-row">
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>مبلمان</h4></li>
-                                                                        <li><a href="products.html">مبلمان اتاق</a></li>
-                                                                        <li><a href="products.html">مبل تکی</a></li>
-                                                                        <li><a href="products.html">مبلمان کودک</a></li>
-                                                                        <li><a href="products.html">میز ناهارخوری</a></li>
-                                                                        <li><a href="products.html">مبلمان اداری</a></li>
-                                                                        <li><a href="products.html">مبل تخت شو</a></li>
-                                                                        <li><a href="products.html">مبلمان راحتی</a></li>
-                                                                        <li><a href="products.html">گل میز</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>دکوراسیون</h4></li>
-                                                                        <li><a href="products.html">تابلوهای دکوری</a></li>
-                                                                        <li><a href="products.html">استیکر</a></li>
-                                                                        <li><a href="products.html">دیوارپوش</a></li>
-                                                                        <li><a href="products.html">کاغذ دیواری</a></li>
-                                                                        <li><a href="products.html">کفپوش</a></li>
-                                                                        <li><a href="products.html">موکت</a></li>
-                                                                        <li><a href="products.html">لوستر</a></li>
-                                                                        <li><a href="products.html">لوازم دکوری</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image2.png" alt="image"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <div class="droopmenu-tabsection" id="droopmenutab11">
+                                                        <a class="droopmenu-tabheader" href="products?search=">{{$categor->name}}</a>
+                                                        <div class="droopmenu-tabcontent">
+                                                            <div class="droopmenu-row">
+                                                                @foreach ($categor->parentCategory as $categoryChild )
 
-                                                        <div class="droopmenu-tabsection" id="droopmenutab12">
-                                                            <a class="droopmenu-tabheader" href="#">مد  و پوشاک</a>
-                                                            <div class="droopmenu-tabcontent">
-                                                                <div class="droopmenu-row">
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>مردانه</h4></li>
-                                                                        <li><a href="products.html">شلوار</a></li>
-                                                                        <li><a href="products.html">پیراهن</a></li>
-                                                                        <li><a href="products.html">تیشرت</a></li>
-                                                                        <li><a href="products.html">کفش</a></li>
-                                                                        <li><a href="products.html">کلاه</a></li>
-                                                                        <li><a href="products.html">کمربند</a></li>
-                                                                        <li><a href="products.html">عینک</a></li>
-                                                                        <li><a href="products.html">ساعت</a></li>
-                                                                        <li><a href="products.html">لباس زیر</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>زنانه</h4></li>
-                                                                        <li><a href="products.html">روسری</a></li>
-                                                                        <li><a href="products.html">چادر</a></li>
-                                                                        <li><a href="products.html">مانتو</a></li>
-                                                                        <li><a href="products.html">شلوار</a></li>
-                                                                        <li><a href="products.html">ساپورت</a></li>
-                                                                        <li><a href="products.html">تی شرت</a></li>
-                                                                        <li><a href="products.html">عینک</a></li>
-                                                                        <li><a href="products.html">ساعت</a></li>
-                                                                        <li><a href="products.html">لباس زیر</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image3.png" alt="image"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                                <ul class="droopmenu-col droopmenu-col4">
+                                                                    <li><h4>{{$categoryChild->name}}</h4></li>
+                                                                    @foreach ($categoryChild->parentCategory as $item )
 
-                                                        <div class="droopmenu-tabsection" id="droopmenutab13">
-                                                            <a class="droopmenu-tabheader" href="#">فرهنگ و هنر</a>
-                                                            <div class="droopmenu-tabcontent">
-                                                                <div class="droopmenu-row">
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>آلات موسیقی</h4></li>
-                                                                        <li><a href="products.html">گیتار</a></li>
-                                                                        <li><a href="products.html">ویالون</a></li>
-                                                                        <li><a href="products.html">ارگ</a></li>
-                                                                        <li><a href="products.html">پیانو</a></li>
-                                                                        <li><a href="products.html">سنتور</a> </li>
-                                                                        <li><a href="products.html">ساز دهنی</a></li>
-                                                                        <li><a href="products.html">گیتار برقی</a></li>
-                                                                        <li><a href="products.html">درام</a></li>
-                                                                        <li><a href="products.html">تجهیزات استدیو</a></li>
-                                                                        <li><a href="products.html">جانبی موسیقی</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>صنایع دستی</h4></li>
-                                                                        <li><a href="products.html">کالاهای مسی</a></li>
-                                                                        <li><a href="products.html">معرق</a></li>
-                                                                        <li><a href="products.html">سفال</a></li>
-                                                                        <li><a href="products.html">لعلینه</a> </li>
-                                                                        <li><a href="products.html">محصولات چرمی</a></li>
-                                                                        <li><a href="products.html">تابلو و ساعت</a></li>
-                                                                        <li><a href="products.html">میناکاری</a></li>
-                                                                        <li><a href="products.html">سوزن دوزی</a></li>
-                                                                        <li><a href="products.html">فیروزه کوبی</a></li>
-                                                                        <li><a href="products.html">خاتم و منبت</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image4.png" alt="image"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                                    <li><a href="products?search={{$item->name}}">{{$item->name}}</a></li>
+                                                                    @endforeach
+                                                                </ul>
+                                                                @endforeach
 
-                                                        <div class="droopmenu-tabsection" id="droopmenutab14">
-                                                            <a class="droopmenu-tabheader" href="#">سلامت و زیبایی</a>
-                                                            <div class="droopmenu-tabcontent">
-                                                                <div class="droopmenu-row">
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>محصولات</h4></li>
-                                                                        <li><a href="products.html">لوازم آرایشی</a></li>
-                                                                        <li><a href="products.html">شامپو</a></li>
-                                                                        <li><a href="products.html">نرم کننده</a></li>
-                                                                        <li><a href="products.html">برس و شانه</a></li>
-                                                                        <li><a href="products.html">انواع ماسک</a></li>
-                                                                        <li><a href="products.html">تقویت کننده مو</a></li>
-                                                                        <li><a href="products.html">رنگ مو</a></li>
-                                                                        <li><a href="products.html">دستمال کاغذی</a></li>
-                                                                        <li><a href="products.html">سایر محصولات</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>برند ها</h4></li>
-                                                                        <li><a href="products.html">صحت</a></li>
-                                                                        <li><a href="products.html">پرژک</a></li>
-                                                                        <li><a href="products.html">داروگر</a></li>
-                                                                        <li><a href="products.html">طبیعت</a></li>
-                                                                        <li><a href="products.html">گلرنگ</a></li>
-                                                                        <li><a href="products.html">گلنار</a></li>
-                                                                        <li><a href="products.html">کلیر</a></li>
-                                                                        <li><a href="products.html">شبنم</a></li>
-                                                                        <li><a href="products.html">آیسان</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image5.png" alt="image"></li>
-                                                                    </ul>
-                                                                </div>
+                                                                <!-- <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
+                                                                    <li><img src="assets/images/megamenu/megamenu-image2.png" alt="image"></li>
+                                                                </ul> -->
                                                             </div>
                                                         </div>
-
-                                                        <div class="droopmenu-tabsection" id="droopmenutab15">
-                                                            <a class="droopmenu-tabheader" href="#">جواهرات</a>
-                                                            <div class="droopmenu-tabcontent">
-                                                                <div class="droopmenu-row">
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>زنانه</h4></li>
-                                                                        <li><a href="products.html">حلقه ازدواج</a></li>
-                                                                        <li><a href="products.html">ساعت</a></li>
-                                                                        <li><a href="products.html">گردنبند</a></li>
-                                                                        <li><a href="products.html">ساعت</a></li>
-                                                                        <li><a href="products.html">النگو</a></li>
-                                                                        <li><a href="products.html">انگشتر</a></li>
-                                                                        <li><a href="products.html">دستبند</a></li>
-                                                                        <li><a href="products.html">سایر</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4">
-                                                                        <li><h4>مرانه</h4></li>
-                                                                        <li><a href="products.html">ساعت</a></li>
-                                                                        <li><a href="products.html">دستبند</a></li>
-                                                                        <li><a href="products.html">گردنبند</a></li>
-                                                                        <li><a href="products.html">انگشتر</a></li>
-                                                                        <li><a href="products.html">عینک</a></li>
-                                                                        <li><a href="products.html">سایر</a></li>
-                                                                    </ul>
-                                                                    <ul class="droopmenu-col droopmenu-col4 d-none d-lg-inline-block">
-                                                                        <li><img src="assets/images/megamenu/megamenu-image6.png" alt="image"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    </div>
+                                                    @endforeach
                                                     </li>
                                                 </ul>
                                             </li>
@@ -761,9 +581,9 @@ $colorMap = [
                             <div class="pt-5" id="share-links">
                                 <span>اشتراک گذاری: </span>
                                 <!-- <a href="#" target="_blank"><span class="share-link"><img src="assets/images/social/insta.png" alt="اینستاگرام" width="18px"></span></a> -->
-                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::fullUrl()) }}&text=این+مقاله+را+ببینید!" target="_blank"><span class="share-link"><img src="assets/images/social/twitter.png" alt="توئیتر" height="25px"> </span></a>
-                                                <a href="https://t.me/share/url?url={{ urlencode(Request::fullUrl()) }}&text=این+مقاله+را+ببینید!" target="_blank"><span class="share-link"><img style="width: 2% !important;" src="assets/images/social/telgrampng.parspng.com_.png" alt="فیس بوک" height="25px"></span></a>
-                                                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(Request::fullUrl()) }}&title=عنوان+مقاله&summary=خلاصه+مقاله" target="_blank"><span class="share-link"><img src="assets/images/social/linkedin.png" alt="لینکدین" height="25px"> </span></a>
+                                <a href="https://twitter.com/intent/tweet?url={{ urlencode(Request::fullUrl()) }}&text=این+محصول+را+ببینید!" target="_blank"><span class="share-link"><img src="assets/images/social/twitter.png" alt="توئیتر" height="25px"> </span></a>
+                                                <a href="https://t.me/share/url?url={{ urlencode(Request::fullUrl()) }}&text=این+محصول+را+ببینید!" target="_blank"><span class="share-link"><img style="width: 2% !important;" src="assets/images/social/telgrampng.parspng.com_.png" alt="فیس بوک" height="25px"></span></a>
+                                                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(Request::fullUrl()) }}&title={{$product->name}}&summary={{$product->discription}}" target="_blank"><span class="share-link"><img src="assets/images/social/linkedin.png" alt="لینکدین" height="25px"> </span></a>
                             </div>
                             <!-- Share Links -->
                         </div>
@@ -1042,11 +862,8 @@ $colorMap = [
             <div class="col-6 col-sm-4 col-lg-2">
                 <div class="title">گروه های محصولات</div>
                 <ul>
-                    @php
-                    use App\Models\productcategory;
-                    $all=productcategory::all();
-                    @endphp
-                    @foreach ($all as $cat)
+
+                    @foreach ($categorys as $cat)
                     <div class="form-group">
                     <form id="ssf{{$cat->id}}" action="{{route('products')}}" method="get">
                     <input type="hidden" name="search" value="{{$cat->name}}"></form>

@@ -1,67 +1,65 @@
 <?php
 
-namespace App\Services;
-
+namespace {{namespace}};
 use App\Base\ServiceResult;
 use App\Base\ServiceWrapper;
-use App\Models\User;
+use App\Models\{{class}};
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\Facades\Hash;
 use App\Models\activecode;
 
-class UserServices
+class {{class}}Services
 {
     public function getAll(array $inputs):ServiceResult
     {
         return app(ServiceWrapper::class)(function() use ($inputs){
-            return User::paginate(10);
+            return {{class}}::paginate(10);
     });
     }
 
-    public function getInfo(User $user):ServiceResult
+    public function getInfo({{class}} $user):ServiceResult
     {
-        $user = User::find(id: $user);
-        // dd(vars: $user);
+        $user = {{class}}::find(id: $user);
         return app(ServiceWrapper::class)(fn()=>$user);
 
     }
 
 
-    public function registerUser(array $inputs):ServiceResult
+    public function register{{class}}(array $inputs):ServiceResult
     {
         return app(ServiceWrapper::class)(function() use($inputs){
             // $inputs['password'] = Hash::make($inputs['password']);
-            $user=User::create($inputs);
+            ${{class}}={{class}}::create($inputs);
             $code = activecode::createcode();
             activecode::create([
 
-                'user_id' =>$user->id,
+                'user_id' =>${{class}}->id,
                 'code' => $code,
                 'expired_at'=> now()->addMinutes(10)
             ]);
-            return $user;
+            return ${{class}};
         });
 
 }
 
 
-    public function UpdateUser(array $inputs,int $user):ServiceResult
+    public function Update{{class}}(array $inputs,int $user):ServiceResult
     {
         return app(ServiceWrapper::class)(function() use($inputs,$user){
             // $inputs['password'] = Hash::make($inputs['password']);
-            $Use = User::find( $user);
-            $User=$Use->update($inputs);
-            $User = $Use->fresh();
+            $Use = {{class}}::find( $user);
+            ${{class}}=$Use->update($inputs);
+            ${{class}} = ${{class}}->fresh();
 
 
-            return $User;
+            return ${{class}};
         });
 
 }
 
-public function DeleteUser(int $user):ServiceResult
+public function Delete{{class}}(int $user):ServiceResult
 {
-    $user = User::find( $user);
+    $user = {{class}}::find( $user);
     return app(ServiceWrapper::class)(fn()=>$user->delete());
 
 }

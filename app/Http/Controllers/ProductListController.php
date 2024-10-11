@@ -18,8 +18,14 @@ class ProductListcontroller extends Controller
         ]);
         $products=Product::query();
         if ($keyword=request('search')) {
-            $products= $products->where('name','LIKE',"%$keyword%")->orWhere('discription','LIKE',"%$keyword%")->orWhere('id','LIKE',"%$keyword%")->orWhere('Brand','LIKE',"%$keyword%")->orderBy('failed_at');
+            $products= $products->where('name','LIKE',"%$keyword%")->orWhere('id','LIKE',"%$keyword%")->orWhere('Brand','LIKE',"%$keyword%")
+            ->orderBy('failed_at');
         }
+        // if ($keyword=request('search')) {
+        //     $products= $products->where('name','LIKE',"%$keyword%")->orWhere('id','LIKE',"%$keyword%")->orWhere('Brand','LIKE',"%$keyword%")->orWhereHas('category', function($query) use($keyword){
+        //         $query->orWhere('name','LIKE',"%$keyword%");
+        //     })->orderBy('failed_at');
+        // }
         if ( $to=request('up')){
             $from = preg_replace("/,/",'',request()->get('from'));
             $up = preg_replace("/,/",'',request()->get('up'));

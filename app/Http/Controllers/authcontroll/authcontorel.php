@@ -38,15 +38,14 @@ class authcontorel extends Controller
         }
 
         $g= User::find($w);
-        //dd(isset($g->activecode[0]->code));
         if ($g) {
-            // $code = activecode::createcode();
             $now = Carbon::now();
             $expiredAt = Carbon::parse($g->activecode[0]->expired_at);
             if (isset($g->activecode[0]->code) && !$expiredAt->lessThan($now)) {
-                dd();
+                // dd();
                 $code=$g->activecode[0]->code;
             }else {
+                activecode::where('code', $g->activecode[0]->code)->delete();
                 $code = activecode::createcode();
                 activecode::create([
 
@@ -56,7 +55,6 @@ class authcontorel extends Controller
                 ]);
             }
 
-            // $g->notify(new notificationCode($fd,$gnn));
             $u = $code;
             $error = '';
             return view('enter2',compact('u','error'));
@@ -72,7 +70,6 @@ class authcontorel extends Controller
                  'code' => $code,
                  'expired_at'=> now()->addMinutes(10)
              ]);
-            //  $cb->notify(new notificationCode($code,$gnn));
             $u = $code;
             $error = '';
             return view('enter2',compact('u','error'));

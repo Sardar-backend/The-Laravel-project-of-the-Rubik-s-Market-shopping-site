@@ -171,7 +171,7 @@
                         @for ( $i=0; $i < $product->stars; $i++ )
                                 <i class="fa fa-star"></i>
 
-                                @endfor
+                        @endfor
                             <span class="encode43bf265g43d">@if($product->comment->count())( ({{$product->comment->count()}}) رای دهنده)@endif</span>
                         </div>
                     </div>

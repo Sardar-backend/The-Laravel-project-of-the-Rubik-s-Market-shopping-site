@@ -1,13 +1,12 @@
 <?php
 
-namespace App\http\ApiRequest\Admin\Adresses;
+namespace App\http\ApiRequest\Admin\User;
 
-use App\Models\adresse;
 use App\Models\User;
 use App\RestfulApi\ApiFormRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdressStoreRequest extends ApiFormRequest
+class UserStoreRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +23,7 @@ class AdressStoreRequest extends ApiFormRequest
      */
     public function rules(): array
     {
-        return adresse::rules();
+        return User::rules();
     }
 }
+

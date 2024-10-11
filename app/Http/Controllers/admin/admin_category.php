@@ -21,7 +21,7 @@ class admin_category extends Controller
             $category= $category->where('name', 'LIKE',"%$keyword%")->orWhere('id', 'LIKE',"%$keyword%");
         }
 
-        $category = $category->orderBy('updated_at')->paginate(20);
+        $category = $category->orderBy('updated_at')->paginate(10);
         return view('admin/componnets/categry',compact('category'));
     }
 

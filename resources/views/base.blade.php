@@ -43,6 +43,13 @@
             background: inherit !important;
             border: 0;
         }
+        @media(max-width:768){
+            .but_s{
+                height:1px !important;
+                width: 1px !important;
+            }
+
+        }
         .post-image{
             pointer-events: none;
         }
@@ -307,11 +314,8 @@
             <div class="col-6 col-sm-4 col-lg-2">
                 <div class="title">گروه های محصولات</div>
                 <ul>
-                    @php
-                    use App\Models\productcategory;
-                    $all=productcategory::all();
-                    @endphp
-                    @foreach ($all as $cat)
+
+                    @foreach ($categorys as $cat)
                     <div class="form-group">
                     <form id="ssf{{$cat->id}}" action="{{route('products')}}" method="get">
                     <input type="hidden" name="search" value="{{$cat->name}}"></form>

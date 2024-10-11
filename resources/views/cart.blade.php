@@ -141,13 +141,13 @@
                                                  <div class="col-6 col-md-2 pl-4 pr-0 pr-md-3">
                                                      <div class="d-md-none font-weight-bold">تعداد</div>
                                                      <div class="input-group mb-3 order-number">
-                                                         <div class="input-group-prepend">
+                                                         <!-- <div class="input-group-prepend">
                                                              <button class="btn btn-outline-secondary btn-plus" type="button">+</button>
-                                                         </div>
+                                                         </div> -->
                                                          <input type="text" name="order-number[]"  max="10" value="{{$cart['quantity']}}" class="form-control text-center order-number" readonly>
-                                                         <div class="input-group-prepend">
+                                                         <!-- <div class="input-group-prepend">
                                                              <button class="btn btn-outline-secondary btn-minus" type="button">_</button>
-                                                         </div>
+                                                         </div> -->
                                                      </div>
                                                  </div>
                                                  <div class="col-6 col-md-2">

@@ -21,18 +21,22 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email'
-        ,'phonenumber',
+        'email',
+        'phonenumber',
+        'meli_code',
         'password',
         'image',
-        'is_superuser'
+        'is_superuser',
+        'birthday',
+        'cart_number',
+        'home_number'
     ];
 
     protected static $rules = [
         'name' => ['required', 'string', 'max:255'],
         'phonenumber' => ['required' ,'max:255'],
         'meli_code' => ['required', 'max:255'],
-        'image' => ['required'],
+        // 'image' => ['required'],
         'cart_number' => ['required',  'max:255'],
         'home_number' => ['required'  , 'max:255'],
         'email' => ['required',  'email', 'max:255'],
