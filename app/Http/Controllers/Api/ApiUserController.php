@@ -19,7 +19,7 @@ use Illuminate\Http\Request;
 use App\Services\UserServices;
 
 
-class apiUser extends Controller
+class ApiUserController extends Controller
 {
     public function __construct(private UserServices $userService) {
     }

@@ -1,58 +1,58 @@
 <?php
 
-namespace {{namespace}};
+namespace App\Services;
 use App\Base\ServiceResult;
 use App\Base\ServiceWrapper;
-use App\Models\{{class}};
+use App\Models\blogcategory;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\Facades\Hash;
 use App\Models\activecode;
 
-class {{class}}Services
+class blogcategoryServices
 {
     public function getAll(array $inputs):ServiceResult
     {
         return app(ServiceWrapper::class)(function() use ($inputs){
-            return {{class}}::paginate(10);
+            return blogcategory::paginate(10);
     });
     }
 
-    public function getInfo({{class}} $user):ServiceResult
+    public function getInfo(blogcategory $user):ServiceResult
     {
-        $user = {{class}}::find(id: $user);
+        $user = blogcategory::find(id: $user);
         return app(ServiceWrapper::class)(fn()=>$user);
 
     }
 
 
-    public function register{{class}}(array $inputs):ServiceResult
+    public function registerblogcategory(array $inputs):ServiceResult
     {
         return app(ServiceWrapper::class)(function() use($inputs){
             // $inputs['password'] = Hash::make($inputs['password']);
-            ${{class}}={{class}}::create($inputs);
-            return ${{class}};
+            $blogcategory=blogcategory::create($inputs);
+            return $blogcategory;
         });
 
 }
 
 
-    public function Update{{class}}(array $inputs,int $user):ServiceResult
+    public function Updateblogcategory(array $inputs,int $user):ServiceResult
     {
         return app(ServiceWrapper::class)(function() use($inputs,$user){
             // $inputs['password'] = Hash::make($inputs['password']);
-            ${{class}} = {{class}}::find( $user);
-            ${{class}}->update($inputs);
-            ${{class}} = ${{class}}->fresh();
+            $blogcategory = blogcategory::find( $user);
+            $blogcategory->update($inputs);
+            $blogcategory = $blogcategory->fresh();
 
 
-            return ${{class}};
+            return $blogcategory;
         });
 
 }
 
-public function Delete{{class}}(int $user):ServiceResult
+public function Deleteblogcategory(int $user):ServiceResult
 {
-    $user = {{class}}::find( $user);
+    $user = blogcategory::find( $user);
     return app(ServiceWrapper::class)(fn()=>$user->delete());
 
 }

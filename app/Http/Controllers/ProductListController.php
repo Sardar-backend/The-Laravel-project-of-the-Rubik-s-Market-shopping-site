@@ -21,11 +21,11 @@ class ProductListcontroller extends Controller
             $products= $products->where('name','LIKE',"%$keyword%")->orWhere('id','LIKE',"%$keyword%")->orWhere('Brand','LIKE',"%$keyword%")
             ->orderBy('failed_at');
         }
-        // if ($keyword=request('search')) {
-        //     $products= $products->where('name','LIKE',"%$keyword%")->orWhere('id','LIKE',"%$keyword%")->orWhere('Brand','LIKE',"%$keyword%")->orWhereHas('category', function($query) use($keyword){
-        //         $query->orWhere('name','LIKE',"%$keyword%");
-        //     })->orderBy('failed_at');
-        // }
+        if ($keyword=request('search')) {
+            $products= $products->where('name','LIKE',"%$keyword%")->orWhere('id','LIKE',"%$keyword%")->orWhere('Brand','LIKE',"%$keyword%")->orWhereHas('category', function($query) use($keyword){
+                $query->orWhere('name','LIKE',"%$keyword%")->limit(1);
+            })->orderBy('failed_at');
+        }
         if ( $to=request('up')){
             $from = preg_replace("/,/",'',request()->get('from'));
             $up = preg_replace("/,/",'',request()->get('up'));

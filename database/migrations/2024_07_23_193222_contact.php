@@ -40,7 +40,7 @@ return new class extends Migration
             // $table->foreign('sabad_id')->references('id')->on('sabad')->onDelete('cascade');
             $table->integer('price');
             $table->integer('count')->default(0);
-            $table->integer('count_view')->default(0);
+            $table->bigInteger('count_view')->default(0);
             $table->longText('discription');
             $table->longText('Criticism');
             $table->float('stars');
@@ -96,7 +96,7 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id()->primary();
             $table->string('title');
-            $table->integer('count_view')->default(0);
+            $table->bigInteger('count_view')->default(0);
             $table->longText('content');
             $table->char('image');
             $table->timestamp('failed_at')->useCurrent();

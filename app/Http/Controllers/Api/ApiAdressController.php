@@ -25,7 +25,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use function PHPUnit\Framework\isNull;
 
 
-class apiAdresse extends Controller
+class ApiAdressController extends Controller
 {
     //This controller has methods to show a single address object and a list of addresses, as well as delete and update the address, the logic part of it is done in the adresseServices.
 
@@ -39,6 +39,19 @@ class apiAdresse extends Controller
             return ApiResponseFacade::withMessage('error')->withStatus(500)->build()->Response();
         }
         return ApiResponseFacade::withData(ApiAdressListResource::collection($result->data)->resource)->build()->Response();
+    }
+
+    public function store(AdressStoreRequest $request )
+    {
+
+
+        $result = $this->adresseServices->registeradresse($request->validated());
+
+
+        if (!$result->ok) {
+            return ApiResponseFacade::withMessage('error')->withStatus(500)->build()->Response();
+        }
+        return ApiResponseFacade::withMessage('User updated successfully')->withData($result->data)->build()->Response();
     }
 
 
@@ -75,6 +88,6 @@ class apiAdresse extends Controller
         if (!$result->ok) {
             return ApiResponseFacade::withMessage('error')->withStatus(500)->build()->Response();
         }
-        return ApiResponseFacade::withMessage('User Deleted successfully')->build()->Response();
+        return ApiResponseFacade::withMessage('Adress Deleted successfully')->build()->Response();
     }
 }

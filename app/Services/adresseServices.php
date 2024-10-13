@@ -20,10 +20,8 @@ class adresseServices
 
     public function getInfo( $user):ServiceResult
     {
-        // dd(vars: $user);
         $user = new Collection([adresse::find( $user)]);
-        // dd(vars: $user);
-        // $user=Auth::user()->adresses()->find($user);
+
 
         return app(ServiceWrapper::class)(fn()=>$user);
 

@@ -1,58 +1,58 @@
 <?php
 
-namespace {{namespace}};
+namespace App\Services;
 use App\Base\ServiceResult;
 use App\Base\ServiceWrapper;
-use App\Models\{{class}};
+use App\Models\blog;
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Support\Facades\Hash;
 use App\Models\activecode;
 
-class {{class}}Services
+class blogServices
 {
     public function getAll(array $inputs):ServiceResult
     {
         return app(ServiceWrapper::class)(function() use ($inputs){
-            return {{class}}::paginate(10);
+            return blog::paginate(10);
     });
     }
 
-    public function getInfo({{class}} $user):ServiceResult
+    public function getInfo(blog $user):ServiceResult
     {
-        $user = {{class}}::find(id: $user);
+        $user = blog::find(id: $user);
         return app(ServiceWrapper::class)(fn()=>$user);
 
     }
 
 
-    public function register{{class}}(array $inputs):ServiceResult
+    public function registerblog(array $inputs):ServiceResult
     {
         return app(ServiceWrapper::class)(function() use($inputs){
             // $inputs['password'] = Hash::make($inputs['password']);
-            ${{class}}={{class}}::create($inputs);
-            return ${{class}};
+            $blog=blog::create($inputs);
+            return $blog;
         });
 
 }
 
 
-    public function Update{{class}}(array $inputs,int $user):ServiceResult
+    public function Updateblog(array $inputs,int $user):ServiceResult
     {
         return app(ServiceWrapper::class)(function() use($inputs,$user){
             // $inputs['password'] = Hash::make($inputs['password']);
-            ${{class}} = {{class}}::find( $user);
-            ${{class}}->update($inputs);
-            ${{class}} = ${{class}}->fresh();
+            $blog = blog::find( $user);
+            $blog->update($inputs);
+            $blog = $blog->fresh();
 
 
-            return ${{class}};
+            return $blog;
         });
 
 }
 
-public function Delete{{class}}(int $user):ServiceResult
+public function Deleteblog(int $user):ServiceResult
 {
-    $user = {{class}}::find( $user);
+    $user = blog::find( $user);
     return app(ServiceWrapper::class)(fn()=>$user->delete());
 
 }
