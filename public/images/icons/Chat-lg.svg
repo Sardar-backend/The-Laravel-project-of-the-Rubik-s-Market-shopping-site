@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="113.801" height="113.801" viewBox="0 0 113.801 113.801">
+  <g id="Chat" transform="translate(5 5)" opacity="0.4">
+    <path id="Path_73" data-name="Path 73" d="M12.592,23.176a6.06,6.06,0,1,1,6.065-6.065A6.069,6.069,0,0,1,12.592,23.176Zm23.578,0a6.06,6.06,0,1,1,6.065-6.065A6.069,6.069,0,0,1,36.169,23.176Zm17.513-6.065a6.065,6.065,0,1,0,6.065-6.055A6.069,6.069,0,0,0,53.682,17.111Z" transform="translate(16.967 35.943)" fill="#dfdfdf" fill-rule="evenodd"/>
+    <path id="Path_74" data-name="Path 74" d="M54,2C23.85,2,2,26.632,2,53.978A54.933,54.933,0,0,0,9.007,79.91a5.453,5.453,0,0,1,.363,4.683L5.893,96.236a3.239,3.239,0,0,0,4.256,4.049l10.484-3.113c2.855-.936,5.086.255,7.733,1.871A51.9,51.9,0,0,0,53.9,105.8c25.743,0,51.9-19.908,51.9-51.978A51.862,51.862,0,0,0,54,2Z" transform="translate(-2 -2)" fill="none" stroke="#dfdfdf" stroke-linecap="round" stroke-linejoin="round" stroke-width="10" fill-rule="evenodd"/>
+  </g>
+</svg>
